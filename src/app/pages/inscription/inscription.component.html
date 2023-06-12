@@ -1,0 +1,44 @@
+<form [formGroup]="formData" (ngSubmit)="onCreateCandidat()">
+  <fieldset formGroupName="connexion">
+    <label>
+      <span>Email : </span>
+      <input type="email" formControlName="email" />
+    </label>
+    <div
+      [hidden]="
+        formData.get('connexion')?.get('email')?.valid ||
+        formData.get('connexion')?.get('email')?.untouched
+      "
+    >
+      <div
+        *ngIf="formData.get('connexion')?.get('email')?.errors?.['required']"
+      >
+        Merci de remplir l'email
+      </div>
+      <div *ngIf="formData.get('connexion')?.get('email')?.errors?.['email']">
+        Le format de l'email est incorrect
+      </div>
+    </div>
+
+    <label>
+      <span>Mot de passe : </span>
+      <input type="password" formControlName="password" />
+    </label>
+  </fieldset>
+  <fieldset formGroupName="candidat">
+    <label>
+      <span>Nom : </span>
+      <input type="text" formControlName="nom" />
+    </label>
+
+    <label>
+      <span>Prénom : </span>
+      <input type="text" formControlName="prenom" />
+    </label>
+  </fieldset>
+  <button type="submit" [disabled]="formData.invalid">Créer mon compte</button>
+
+  <br />
+
+  {{ candidat | json }}
+</form>
