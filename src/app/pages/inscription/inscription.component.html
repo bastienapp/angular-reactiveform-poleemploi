@@ -13,7 +13,7 @@
       <div
         *ngIf="formData.get('connexion')?.get('email')?.errors?.['required']"
       >
-        Merci de remplir l'email
+        Merci de renseigner l'email
       </div>
       <div *ngIf="formData.get('connexion')?.get('email')?.errors?.['email']">
         Le format de l'email est incorrect
